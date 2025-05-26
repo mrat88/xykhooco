@@ -1,0 +1,20 @@
+{
+  "short_name": "whiten_management",
+  "name": "Whiten Management",
+  "description": "Whiten brings together experts from various fields to create win-win investment plans that benefit both business owners and investors, all aimed at powering a sustainable future",
+  "icons": [
+    
+    {
+      "src": "./public/logo-512.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "whiten_management",
+  "start_url": "/",
+  "background_color": "#f5f6f9",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0f4416"
+  
+}
