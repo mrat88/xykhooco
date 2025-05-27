@@ -475,34 +475,81 @@ body{
 }
 
 .section{
-    // background-image: -webkit-image-set(url($webp) 1x);
     &-header{
         // @include backgroundImageWebp('./public/bg-cover-d.jpg?v1.0.1', './public/bg-cover-d.webp?v1.0.1');
         // background-image: 
         //     linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
         //     url("./public/bg-cover-d.webp?1.0.1"),
         //     url("./public/bg-cover-d.jpg?v1.0.1");
-        background-image: 
-        linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
-        image-set(
-            url("./public/bg-cover-d.webp?1.0.2") type("image/webp"),
-            url("./public/bg-cover-d.jpg?v1.0.2") type("image/jpeg")
-        );
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        height: 700px;
-        max-height: 700px;
 
-        @include lg{
-            @include backgroundImageWebp('./public/bg-cover-m.jpg?v1.0.1', './public/bg-cover-m.webp?v1.0.1');
-            background-attachment: unset;
-            background-position: bottom;
+        // background-image: 
+        // linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
+        // image-set(
+        //     url("./public/bg-cover-d.webp?1.0.2") type("image/webp"),
+        //     url("./public/bg-cover-d.jpg?v1.0.2") type("image/jpeg")
+        // );
+
+        // background-size: cover;
+        // background-position: center;
+        // background-attachment: fixed;
+        // height: 700px;
+        // max-height: 700px;
+
+        // @include lg{
+        //     @include backgroundImageWebp('./public/bg-cover-m.jpg?v1.0.1', './public/bg-cover-m.webp?v1.0.1');
+        //     background-attachment: unset;
+        //     background-position: bottom;
+        // }
+
+        // @include xs{
+        //     height: 600px;
+        //     max-height: 600px;
+        // }
+
+        .header-background{
+            height: 700px;
+            top:0;
+            left: 0;
+            width: 100%;
+            
+            @include xs{
+                height: 600px;
+                max-height: 600px;
+            }
+
+            &::before{
+                @include before();
+                width: 100%;
+                height: 100%;
+                top:0;
+                left:0;
+                background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3));
+            }
+
+            img{
+                object-fit: cover;
+                z-index: -1;
+                position: relative;
+
+                @include xs{
+                    height: 600px;
+                    max-height: 600px;
+                    object-position: bottom;
+                }
+            }
+            
         }
 
-        @include xs{
-            height: 600px;
-            max-height: 600px;
+        .col-xl-11{
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+
+            @include xs{
+                height: 600px;
+                max-height: 600px;
+                display: block;
+            }
         }
 
         &::before{
@@ -512,6 +559,7 @@ body{
             top:0;
             left:0;
             background: linear-gradient(315deg, rgba($primary-color, 0.45) 0%, rgba($secondary-color, 0.75) 100%);
+            z-index: 1;
         }
 
         &::after{
@@ -522,6 +570,7 @@ body{
             height: 15%;
             border-top-right-radius: 50px;
             background-color: $white;
+            z-index: 2;
 
             @include xs{
                 display: none;

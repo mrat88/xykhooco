@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # Redirect www to non-www
-RewriteCond %{HTTP_HOST} ^www\.xykhoo\.co [NC]
-RewriteRule ^(.*)$ https://xykhoo.co/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^xykhoo\.co [NC]
+RewriteRule ^(.*)$ https://www.xykhoo.co/$1 [L,R=301]
 
 # Remove .html from URLs
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -19,9 +19,16 @@ ErrorDocument 404 /404.html
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
     ExpiresByType text/html "access plus 1 day"   # Updated to 1 day for flexibility
     ExpiresByType application/pdf "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|otf|eot|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
 </IfModule>

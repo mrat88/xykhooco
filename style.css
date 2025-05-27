@@ -310,30 +310,51 @@ body .min-vh-80 {
   }
 }
 
-.section-header {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), -webkit-image-set(url("./public/bg-cover-d.webp?1.0.2") type("image/webp"), url("./public/bg-cover-d.jpg?v1.0.2") type("image/jpeg"));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), image-set(url("./public/bg-cover-d.webp?1.0.2") type("image/webp"), url("./public/bg-cover-d.jpg?v1.0.2") type("image/jpeg"));
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+.section-header .header-background {
   height: 700px;
-  max-height: 700px;
-}
-@media screen and (max-width: 992px) {
-  .section-header {
-    background-image: url("./public/bg-cover-m.jpg?v1.0.1");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: -webkit-image-set(url("./public/bg-cover-m.webp?v1.0.1") 1x);
-    background-attachment: unset;
-    background-position: bottom;
-  }
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 @media screen and (max-width: 575px) {
-  .section-header {
+  .section-header .header-background {
     height: 600px;
     max-height: 600px;
+  }
+}
+.section-header .header-background::before {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+}
+.section-header .header-background img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+  position: relative;
+}
+@media screen and (max-width: 575px) {
+  .section-header .header-background img {
+    height: 600px;
+    max-height: 600px;
+    -o-object-position: bottom;
+       object-position: bottom;
+  }
+}
+.section-header .col-xl-11 {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 575px) {
+  .section-header .col-xl-11 {
+    height: 600px;
+    max-height: 600px;
+    display: block;
   }
 }
 .section-header::before {
@@ -344,6 +365,7 @@ body .min-vh-80 {
   top: 0;
   left: 0;
   background: linear-gradient(315deg, rgba(242, 121, 20, 0.45) 0%, rgba(87, 44, 136, 0.75) 100%);
+  z-index: 1;
 }
 .section-header::after {
   content: " ";
@@ -354,6 +376,7 @@ body .min-vh-80 {
   height: 15%;
   border-top-right-radius: 50px;
   background-color: #ffffff;
+  z-index: 2;
 }
 @media screen and (max-width: 575px) {
   .section-header::after {
